@@ -4,11 +4,9 @@ pipeline {
 	stages {
 		stage('Build') {
            steps {
-      		dir ('myproject') {
-            	
-            	sh 'mvn clean package'
-      		}	
-      	} 
+      		withMaven(maven : 'maven3.6.3') {
+                bat 'mvn clean compile'
+            }
       
    }
 	}
