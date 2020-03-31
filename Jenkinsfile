@@ -18,6 +18,22 @@ pipeline {
                     input('Do you want to proceed?')
                  }
                  }
+		 
+		 stage('Sonarqube') {
+    			environment {
+        			scannerHome = tool 'sonarcube scanner'
+    			}
+    				steps {
+        				withSonarQubeEnv('sonarqube') {
+            				sh "${scannerHome}/bin/sonar-scanner"
+        		}
+       					timeout(time: 10, unit: 'MINUTES') {
+            				waitForQualityGate abortPipeline: true
+        	}
+    	}
+}
+		 
+		 
 		 stage ('Build') {
             		steps {
                 		bat label: '', script: 'mvn clean package'
