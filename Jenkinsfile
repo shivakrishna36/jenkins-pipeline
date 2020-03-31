@@ -15,11 +15,6 @@ pipeline {
                     input('Do you want to proceed?')
                  }
                  }
-		 stage('Build') {
-                 steps {
-                    echo 'build success'
-                 }
-                 }
 		 stage ('Build') {
             		steps {
                 		sh 'mvn -Dmaven.test.failure.ignore=true install' 
