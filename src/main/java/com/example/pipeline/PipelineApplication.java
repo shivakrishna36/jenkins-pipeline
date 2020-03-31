@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PipelineApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
-		String option = argv[0];
+		String option = args[0];
 		SpringApplication.run(PipelineApplication.class, args);
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/",method = GET)
 	public String home() {
 		return "index";
 	}
