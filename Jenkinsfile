@@ -25,7 +25,7 @@ pipeline {
     			}
     				steps {
         				withSonarQubeEnv('sonarqube') {
-            				sh "${scannerHome}/bin/sonar-scanner"
+            				bat label: '', script: 'mvn clean sonar:sonar'
         		}
        					timeout(time: 10, unit: 'MINUTES') {
             				waitForQualityGate abortPipeline: true
