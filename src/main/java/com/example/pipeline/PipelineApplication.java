@@ -15,7 +15,7 @@ public class PipelineApplication extends SpringBootServletInitializer{
 		SpringApplication.run(PipelineApplication.class, args);
 	}
 
-	@RequestMapping("/",method = GET)
+	@RequestMapping(value="/",method = RequestMethod.GET)
 	public String home() {
 		return "index";
 	}
