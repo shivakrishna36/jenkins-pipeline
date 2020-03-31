@@ -4,6 +4,9 @@ pipeline {
         maven 'maven3.6.3'
         jdk 'jdk8'
     	}
+	environment {
+	    PATH = "C:\\WINDOWS\\SYSTEM32"
+	}
          stages {
                  stage('One') {
                  steps {
