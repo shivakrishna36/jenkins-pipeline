@@ -13,11 +13,7 @@ pipeline {
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
-                 stage('Two') {
-                 steps {
-                    input('Do you want to proceed?')
-                 }
-                 }
+                 
 		 
 		 stage('Sonarqube') {
     			environment {
@@ -39,6 +35,21 @@ pipeline {
 				 deploy adapters: [tomcat9(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8088/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
 			 }
 		 }
+		 stage('continue?') {
+			 
+			 timeout(time: 10, unit: 'SECONDS') {
+                     		steps {
+                    			input('Do you want to proceed?')
+                 		}
+			}
+
+                 }
+		 stage ('deploy to tomcat2') {
+			 steps {
+				 deploy adapters: [tomcat8(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8089/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
+			 }
+		 }
+		 
 	 }
 }
 
