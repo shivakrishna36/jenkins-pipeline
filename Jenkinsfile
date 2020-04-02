@@ -35,10 +35,12 @@ pipeline {
 				 deploy adapters: [tomcat9(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8088/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
 			 }
 		 }
+		 
 		 stage('continue?') {
 			 
-			 timeout(time: 10, unit: 'SECONDS') {
+			 
                      		steps {
+					timeout(time: 10, unit: 'SECONDS') {
                     			input('Do you want to proceed?')
                  		}
 			}
