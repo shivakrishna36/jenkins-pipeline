@@ -14,7 +14,7 @@ pipeline {
                  }
                  }
                  
-		 
+		 parallel {
 		 stage('Sonarqube') {
     			environment {
         			scannerHome = tool 'sonarcube scanner'
@@ -29,6 +29,7 @@ pipeline {
             		steps {
                 		bat label: '', script: 'mvn clean package'
            	 }
+		 }
 		 }
 		 stage ('deploy to tomcat') {
 			 steps {
