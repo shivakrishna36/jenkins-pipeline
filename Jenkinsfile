@@ -6,6 +6,7 @@ pipeline {
     	}
 	environment {
 	    PATH = "C:\\WINDOWS\\SYSTEM32"
+	    scannerHome = tool 'sonarcube scanner'
 	}
          stages {
                  stage('One') {
@@ -16,21 +17,19 @@ pipeline {
 		 stage ('parallel') {
 			 
 		 		parallel {
+					stage ('Build') {
+            					steps {
+                					bat label: '', script: 'mvn clean package'
+           	 				}
+		 			}
 		 			stage('Sonarqube') {
-    						environment {
-        						scannerHome = tool 'sonarcube scanner'
-    							}
 			 			steps {
 							bat 'mvn sonar:sonar'
 			 			}
 					}
 		 
 		 
-		 			stage ('Build') {
-            					steps {
-                					bat label: '', script: 'mvn clean package'
-           	 				}
-		 			}
+		 			
 		 		}
 		 	
 		 }
