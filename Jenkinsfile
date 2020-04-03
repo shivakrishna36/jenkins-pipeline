@@ -28,10 +28,10 @@ pipeline {
 		 		stage ('Build') {
             				steps {
                 				bat label: '', script: 'mvn clean package'
-           	 				}
-		 			}
+           	 			}
 		 		}
-		 
+		 	}
+		 }
 		 stage ('deploy to tomcat') {
 			 steps {
 				 deploy adapters: [tomcat9(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8088/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
