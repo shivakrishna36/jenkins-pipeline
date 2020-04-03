@@ -20,11 +20,13 @@ pipeline {
 					stage ('Build') {
             					steps {
                 					bat label: '', script: 'mvn clean package'
+							echo 'build success'
            	 				}
 		 			}
 		 			stage('Sonarqube') {
 			 			steps {
 							bat 'mvn sonar:sonar'
+							echo 'sonarqube success'
 			 			}
 					}
 		 
