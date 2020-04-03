@@ -13,24 +13,24 @@ pipeline {
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
-		
-		 parallel {
-		 stage('Sonarqube') {
-    			environment {
-        			scannerHome = tool 'sonarcube scanner'
-    			}
-			 steps {
-				 bat 'mvn sonar:sonar'
-			 }
-}
+		 stage ('parallel') {
+		 	parallel {
+		 		stage('Sonarqube') {
+    					environment {
+        					scannerHome = tool 'sonarcube scanner'
+    						}
+			 		steps {
+						bat 'mvn sonar:sonar'
+			 			}
+					}
 		 
 		 
-		 stage ('Build') {
-            		steps {
-                		bat label: '', script: 'mvn clean package'
-           	 }
-		 }
-		 }
+		 		stage ('Build') {
+            				steps {
+                				bat label: '', script: 'mvn clean package'
+           	 				}
+		 			}
+		 		}
 		 
 		 stage ('deploy to tomcat') {
 			 steps {
