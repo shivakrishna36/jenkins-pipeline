@@ -13,7 +13,7 @@ pipeline {
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
-                 
+		 stage('parallel stage') {
 		 parallel {
 		 stage('Sonarqube') {
     			environment {
@@ -29,6 +29,7 @@ pipeline {
             		steps {
                 		bat label: '', script: 'mvn clean package'
            	 }
+		 }
 		 }
 		 }
 		 stage ('deploy to tomcat') {
