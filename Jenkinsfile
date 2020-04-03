@@ -14,7 +14,7 @@ pipeline {
                  }
                  }
 		 stage ('parallel') {
-			 steps {
+			 
 		 		parallel {
 		 			stage('Sonarqube') {
     						environment {
@@ -32,7 +32,7 @@ pipeline {
            	 				}
 		 			}
 		 		}
-		 	}
+		 	
 		 }
 		 stage ('deploy to tomcat') {
 			 steps {
