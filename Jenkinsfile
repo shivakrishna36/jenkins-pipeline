@@ -3,11 +3,12 @@ pipeline {
 	tools {
         maven 'maven3.6.3'
         jdk 'jdk8'
+	tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+
     	}
 	environment {
 	    	PATH = "C:\\WINDOWS\\SYSTEM32"
 	    	scannerHome = tool 'sonarcube scanner'
-		tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
 		registry = "shivakrishna1236/pipeline"
    		registryCredential = 'dockerhub'
 		dockerImage = ''
