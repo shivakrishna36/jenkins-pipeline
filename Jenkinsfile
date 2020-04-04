@@ -42,7 +42,7 @@ pipeline {
 		
 		 stage ('building image') {
 			 steps{
-      				sh 'docker build . -t shivakrishna1236/pipeline'
+      				bat 'docker build . -t shivakrishna1236/pipeline'
     			}
 		 }
 		 
