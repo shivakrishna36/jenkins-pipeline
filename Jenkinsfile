@@ -5,8 +5,11 @@ pipeline {
         jdk 'jdk8'
     	}
 	environment {
-	    PATH = "C:\\WINDOWS\\SYSTEM32"
-	    scannerHome = tool 'sonarcube scanner'
+	    	PATH = "C:\\WINDOWS\\SYSTEM32"
+	    	scannerHome = tool 'sonarcube scanner'
+		registry = "shivakrishna1236/pipeline"
+   		registryCredential = 'dockerhub'
+		dockerImage = ''
 	}
          stages {
                  stage('One') {
@@ -56,7 +59,28 @@ pipeline {
 				 deploy adapters: [tomcat8(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8089/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
 			 }
 		 }
+		 stage ('building image') {
+			 steps{
+      				script {
+        				docker.build registry + ":$BUILD_NUMBER"
+      				}
+    			}
+		 }
 		 
-	 }
+		 stage('Deploy Image') {
+      			steps{
+        			script {
+          				docker.withRegistry( '', registryCredential ) {
+            				dockerImage.push()
+          				}
+        			}
+      			}
+    		}
+    		stage('Remove Unused docker image') {
+      			steps{
+        			sh "docker rmi $registry:$BUILD_NUMBER"
+     				}
+    			}
+	 	}
 }
 
