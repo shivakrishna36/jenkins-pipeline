@@ -42,9 +42,7 @@ pipeline {
 		
 		 stage ('building image') {
 			 steps{
-      				script {
-        				docker.build registry + ":$BUILD_NUMBER"
-      				}
+      				sh 'docker build . -t shivakrishna1236/pipeline'
     			}
 		 }
 		 
