@@ -3,7 +3,6 @@ pipeline {
 	tools {
         maven 'maven3.6.3'
         jdk 'jdk8'
-	tool name: 'docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
 
     	}
 	environment {
