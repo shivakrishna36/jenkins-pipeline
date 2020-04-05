@@ -41,9 +41,7 @@ pipeline {
 		 }
 		
 		 stage ('building image') {
-			 agent {
-                        label "docker"
-                    }
+			 
 					 
 			 steps{
       				bat 'docker build . -t shivakrishna1236/pipeline'
