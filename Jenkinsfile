@@ -41,14 +41,13 @@ pipeline {
 		 }
 		
 		 stage ('building image') {
-			 agent {
-				 docker {
+			 agent docker {
 					 
 			 steps{
       				bat 'docker build . -t shivakrishna1236/pipeline'
     			}
 				 }
-			 }
+			 
 		 }
 		 
 		
