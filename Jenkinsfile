@@ -22,7 +22,7 @@ pipeline {
 			 
 					 
 			 steps{
-      				sh 'docker build . -t shivakrishna1236/pipeline'
+      				sh 'sudo docker build . -t shivakrishna1236/pipeline'
     			}
 				 
 			 
