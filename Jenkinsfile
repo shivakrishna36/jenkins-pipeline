@@ -18,6 +18,13 @@ pipeline {
                  }
                  }
 		 
+		 stage ('Build') {
+            		steps {
+       				sh label: '', script: 'mvn clean package'
+				echo 'build success'
+           	 		}
+		 	}
+
 		 stage ('building docker image') {
 			 
 					 
