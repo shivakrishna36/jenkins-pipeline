@@ -36,11 +36,10 @@ pipeline {
 		 }
 		 stage('Deploy Image') {
  		 	steps{
-    				script {
-      					docker.withRegistry( '', registryCredential ) {
-        				dockerImage.push()
-      				}
-    				}
+    				withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerpwd', usernameVariable: 'dockername')]) {
+    					sh "docker login -u ${env.dockername} -p ${env.dockerpwd}"
+					sh 'docker push shivakrishna1236/pipeline:latest'
+				}
   			}
 		}
 		 stage('Remove Unused docker image') {
