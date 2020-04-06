@@ -1,5 +1,5 @@
 
-FROM openjdk:8
+FROM tomcat:8.0
+ADD webapp.war /usr/local/tomcat/webapps/
 EXPOSE 8080
-ADD target/pipeline.war pipelinewar
-ENTRYPOINT ["java -jar","pipeline.war"]
+CMD ["catalina.sh", "run"]
