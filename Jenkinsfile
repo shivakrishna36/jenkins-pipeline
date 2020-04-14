@@ -7,8 +7,6 @@ pipeline {
     	}
 	environment {
 		
-		PATH = "C:\\WINDOWS\\SYSTEM32"
-	    	scannerHome = tool 'sonarcube scanner'
 		
 		
 		registry = "shivakrishna1236/pipeline"
