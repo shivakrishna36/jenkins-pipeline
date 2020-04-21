@@ -42,10 +42,10 @@ pipeline {
 		 	
 		 }
 		 
-		 stage ('deploy in cointainer1') {
-			 steps {
-				 deploy adapters: [tomcat8(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8088/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
-			 }
+	/*	 stage ('deploy in cointainer1') {
+			 steps {*/
+	//			 deploy adapters: [tomcat8(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8088/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
+	/*		 }
 		 }
 		 
 		 stage ('continue?') {
@@ -57,9 +57,9 @@ pipeline {
 		 }
 		 
 		  stage ('deploy in cointainer2') {
-			 steps {
-				 deploy adapters: [tomcat9(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8089/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
-			 }
+			 steps {*/
+	//			 deploy adapters: [tomcat9(credentialsId: '702722ae-4842-40e4-b6f4-6ada448a3cd6', path: '', url: 'http://localhost:8089/')], contextPath: 'webapp', onFailure: false, war: '**/*.war'
+	/*		 }
 		 }
 		
 		
@@ -79,8 +79,13 @@ pipeline {
 					sh 'docker push shivakrishna1236/pipeline:latest'
 				}
   			}
-		}
-		
+		}*/
+		stage ('test') {
+            					steps {
+                					bat label: '', script: 'mvn test'
+							echo 'test success'
+           	 				}
+		 			}
 		
 	 	}
 }
