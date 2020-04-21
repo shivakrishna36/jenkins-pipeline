@@ -8,6 +8,8 @@ class PipelineApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("hello");
+
 	}
 
 }
