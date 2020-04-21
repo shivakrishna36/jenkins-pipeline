@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	tools {
-        maven 'maven3.5.2'
+        maven 'maven3.6.3'
         jdk 'jdk8'
 
     	}
@@ -10,9 +10,9 @@ pipeline {
 		PATH = "C:\\WINDOWS\\SYSTEM32"
 	    	scannerHome = tool 'sonarcube scanner'
 		
-		registry = "shivakrishna1236/pipeline"
+		/*registry = "shivakrishna1236/pipeline"
    		registryCredential = 'dockerhub'
-		dockerImage = ''
+		dockerImage = ''*/
 	}
          stages {
                  stage('One') {
