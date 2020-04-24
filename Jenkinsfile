@@ -23,7 +23,7 @@ pipeline {
 		  
 		stage ('Build') {
             			steps {
-                			bat label: '', script: 'mvn clean package'
+                			sh label: '', script: 'mvn clean package'
 					echo 'build success'
            	 				}
 		 			}
