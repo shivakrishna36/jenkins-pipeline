@@ -1,3 +1,6 @@
+FROM openjdk:8
+RUN java -version
+
 FROM tomcat:8.0
 ADD webapp.war /usr/local/tomcat/webapps/
 EXPOSE 8080
