@@ -17,14 +17,14 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
-			sh 'java -version'
+			sh label: '', script: 'java -version'
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
 		  
 		stage ('Build') {
             			steps {
-                			sh label: '', script: 'mvn clean package'
+                			sh label: '', script: 'mvn clean package test'
 					echo 'build success'
            	 				}
 		 			}
