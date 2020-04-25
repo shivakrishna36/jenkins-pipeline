@@ -17,7 +17,7 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
-			
+			sh 'java -version'
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
