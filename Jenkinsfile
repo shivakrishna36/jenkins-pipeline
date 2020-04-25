@@ -17,6 +17,7 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
+			sh org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_SHELL_WRAPPER=true
                      echo 'Hi, this is jenkins pipeline'
                  }
                  }
