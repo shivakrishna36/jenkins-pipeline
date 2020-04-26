@@ -29,7 +29,7 @@ pipeline {
 					echo 'build success'
            	 				}
 		 			}
-		/* stage ('building docker image') {
+		 stage ('building docker image') {
 			 
 					 
 			 steps{
@@ -45,7 +45,7 @@ pipeline {
 					sh 'docker push shivakrishna1236/pipeline:latest'
 				}
   			}
-		}*/
+		}
 		
 		
 	 	}
