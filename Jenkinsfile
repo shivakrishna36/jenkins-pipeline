@@ -46,6 +46,13 @@ pipeline {
 				}
   			}
 		}
+		 
+		 stage('kubernetes deploy') {
+			 kubernetesDeploy(configs: 'deploy1.yml',kubeconfigId: 'kube',enableConfigSubstitution: true)
+			 kubernetesDeploy(configs: 'service1.yml',kubeconfigId: 'kube',enableConfigSubstitution: true)
+
+				 
+		 }
 		
 		
 	 	}
