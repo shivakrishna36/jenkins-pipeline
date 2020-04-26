@@ -7,10 +7,6 @@ pipeline {
     	}
 	environment {
 		
-		System.setProperty("-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS","true")
-		System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_BINARY_WRAPPER","true")
-		System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_SHELL_WRAPPER","true")
-		
 		PATH = "C:\\WINDOWS\\SYSTEM32"
 	    	//scannerHome = tool 'sonarcube scanner'
 		
@@ -21,6 +17,11 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
+			 
+			 System.setProperty("-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS","true")
+			System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_BINARY_WRAPPER","true")
+			System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_SHELL_WRAPPER","true")
+			 
 			sh label: '', script: 'java -version'
                      echo 'Hi, this is jenkins pipeline'
                  }
