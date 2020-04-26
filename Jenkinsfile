@@ -17,7 +17,6 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
-			 org.jenkinsci.plugins.durabletask.BourneShellScript.FORCE_BINARY_WRAPPER=true
 			sh label: '', script: 'java -version'
                      echo 'Hi, this is jenkins pipeline'
                  }
