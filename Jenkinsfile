@@ -5,15 +5,15 @@ pipeline {
         jdk 'jdk8'
 
     	}
-	environment {
+	/*environment {
 		
 		PATH = "C:\\WINDOWS\\SYSTEM32"
 	    	//scannerHome = tool 'sonarcube scanner'
 		
-		/*registry = "shivakrishna1236/pipeline"
+		registry = "shivakrishna1236/pipeline"
    		registryCredential = 'dockerhub'
-		dockerImage = ''*/
-	}
+		dockerImage = ''
+	}*/
          stages {
                  stage('One') {
                  steps {
