@@ -23,12 +23,27 @@ pipeline {
                  }
                  }
 		  
-		stage ('Build') {
-            			steps {
-                			sh label: '', script: 'mvn clean package test'
-					echo 'build success'
+		stage ('parallel') {
+			 
+		 		parallel {
+					stage ('Build') {
+            					steps {
+                					bat label: '', script: 'mvn clean package'
+							echo 'build success'
            	 				}
 		 			}
+		 			stage('Sonarqube') {
+			 			steps {
+							bat 'mvn sonar:sonar'
+							echo 'sonarqube success'
+			 			}
+					}
+		 
+		 
+		 			
+		 		}
+		 	
+		 }
 		 stage ('building docker image') {
 			 
 					 
