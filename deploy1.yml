@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: shivakrishna1236/pipeline
+          image: shivakrishna1236/pipedemo
           ports:
             - containerPort: 80
