@@ -1,9 +1,16 @@
-FROM tomcat:jdk8
+#FROM tomcat:jdk8
+#RUN java -version
+#ADD target/pipeline.war /usr/local/tomcat/webapps/
+#RUN rm /usr/local/tomcat/conf/tomcat-users.xml
+#ADD tomcat-users.xml /usr/local/tomcat/conf/
+#EXPOSE 8080
+#CMD ["catalina.sh", "run"]
+
+FROM openjdk:8
 RUN java -version
-ADD target/pipeline.war /usr/local/tomcat/webapps/
-RUN rm /usr/local/tomcat/conf/tomcat-users.xml
-ADD tomcat-users.xml /usr/local/tomcat/conf/
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
+ADD target/pipeline.war pipeline.war
+EXPOSE 8084
+CMD ["java","-jar","/pipeline.war"]
+
 
 
